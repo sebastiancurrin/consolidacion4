@@ -1,0 +1,67 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-right: 3rem;
+}
+
+.container-lg{
+    width: 50%;
+    
+}
+
+.container-md{
+    width: 40%;
+
+}
+
+.box{
+    padding: 4rem;
+    text-align: center;
+    background-color: rgb(172, 211, 247), 240);
+    width: 80%;
+    margin: 0 auto ;
+}
+
+.col{
+
+}
+
+.form{
+    padding: 2rem;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    margin-bottom: 2em;
+}
+
+.form label, .form input{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.form-red{
+ background-color: rgb(233, 156, 156);
+ border-color: rgb(172, 47, 47);
+}
+
+.form-green{
+    background-color: rgb(150, 221, 150);
+    border-color: rgb(86, 153, 30);
+}
+
+.tabla{
+    margin-bottom: 2rem;
+    border: solid .5px rgb(161, 161, 161);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.tabla tbody{
+    background-color: rgb(104, 174, 240);
+}
