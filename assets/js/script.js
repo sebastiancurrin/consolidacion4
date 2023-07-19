@@ -14,9 +14,12 @@ const resumen = {
         this.totalGastos += gasto[1]
         this.actualizarSaldo()
     },
-    quitarGasto(gasto){
-        this.gastos.push(gasto)
-        this.totalGastos -= gasto[1]
+    quitarGasto(index){
+        console.log('antes de borrar array ',resumen)
+        console.log('gasto usado: ',this.gastos[index])
+        this.totalGastos -= this.gastos[index][1]
+        console.log('despues de borrar array ',resumen)
+        //this.gastos.slice(index,1)
         this.actualizarSaldo()
 
     },
@@ -30,7 +33,6 @@ const resumen = {
 
 const calcular = document.getElementById('calcular')
 const agregar = document.getElementById('add')
-//const borrar = 
 
 let inputPresupuesto = document.getElementById('inputPresupuesto')
 let inputCantGasto = document.getElementById('inputCantGasto')
@@ -46,7 +48,7 @@ calcular.addEventListener('click',e=>{
     e.preventDefault()
     resumen.agregarPresupuesto(Number(inputPresupuesto.value))
     actualizarTablaPresupuesto()
-    console.log(resumen)
+   
 
 })
 
@@ -60,7 +62,20 @@ agregar.addEventListener('click',(e)=>{
     )
     actualizarTablaPresupuesto()
     actualizarTablaGastos()
-    console.log(resumen)
+   
+})
+
+// borrar gasto 
+vistaTablaGastos.addEventListener('click', function(e){
+    if (e.target.tagName == 'BUTTON'){
+       let id = Number(e.target.id)
+       console.log('id de tabla a borrar', id)
+       resumen.quitarGasto(id)
+       
+       e.target.parentElement.parentElement.remove()
+       actualizarTablaPresupuesto()
+       
+    }
 })
 
 function actualizarTablaPresupuesto(){
@@ -70,9 +85,12 @@ function actualizarTablaPresupuesto(){
 }
 
 function actualizarTablaGastos(){
+    let position = resumen.gastos.length-1
     let fila = document.createElement('tr')
     fila.innerHTML = `<td>${inputNombreGasto.value}</td>
                      <td>${inputCantGasto.value}</td>
-                     <td><button>eliminar</button></td>`
+                     <td>
+                        <button id="${position}">
+                            eliminar</button></td>`
     vistaTablaGastos.append(fila)
 }
